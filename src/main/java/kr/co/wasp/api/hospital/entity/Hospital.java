@@ -17,6 +17,9 @@ public class Hospital {
     private String hospital_register_num;
 
     private String hospital_name;
+    private String hospital_name_en;
+    private String hospital_name_ch;
+    private String hospital_name_ja;
 
     private String hospital_category;
 

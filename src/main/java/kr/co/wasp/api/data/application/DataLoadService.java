@@ -111,6 +111,9 @@ public class DataLoadService {
                 hospital.setHospital_key(hospitalKey);
                 hospital.setHospital_register_num(hospitalRegisterNum);
                 hospital.setHospital_name(hospitalName);
+                hospital.setHospital_name_en(translate(hospitalName, "en-Us"));
+                hospital.setHospital_name_ch(translate(hospitalName, "ZH"));
+                hospital.setHospital_name_ja(translate(hospitalName, "JA"));
                 hospital.setHospital_category(hospitalCategory);
                 hospital.setHospital_si(hospitalSi);
                 hospital.setHospital_gu(hospitalGu);
@@ -150,10 +153,12 @@ public class DataLoadService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
 
-}
+    }
 
     public void getPharmacy() {
         ObjectMapper mapper = new ObjectMapper();
