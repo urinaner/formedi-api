@@ -13,6 +13,10 @@ public class MedicineDto {
     private Long medicine_id;
 
     private String medicine_name;
+    private String medicine_name_en;
+    private String medicine_name_ch;
+    private String medicine_name_ja;
+
 
     private String medicine_image;
 
