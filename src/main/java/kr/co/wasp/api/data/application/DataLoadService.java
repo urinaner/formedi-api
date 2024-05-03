@@ -47,6 +47,7 @@ public class DataLoadService {
 
     public void getMedicine() {
         String medicineAPIPath = "MedicineAPI.json";
+        String mediName;
 
         try {
             // Medicine 저장
@@ -59,6 +60,10 @@ public class DataLoadService {
                     Medicine medicine = new Medicine();
                     medicine.setMedicine_id(medicineNode.get("medicine_id").asLong());
                     medicine.setMedicine_name(medicineNode.get("medicine_name").asText());
+                    mediName = medicineNode.get("medicine_name").asText();
+                    medicine.setMedicine_name_en(translate(mediName, "en-Us"));
+                    medicine.setMedicine_name_ch(translate(mediName, "ZH"));
+                    medicine.setMedicine_name_ja(translate(mediName, "JA"));
                     medicine.setMedicine_image(medicineNode.get("medicine_image").asText());
                     medicine.setMedicine_efficacy(medicineNode.get("medicine_efficacy").asText());
                     medicine.setInstructions(medicineNode.get("instructions").asText());
@@ -84,6 +89,8 @@ public class DataLoadService {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
