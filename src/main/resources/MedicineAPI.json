@@ -1,0 +1,173 @@
+[
+  {
+    "medicine_id": 1,
+    "medicine_name": "어린이부루펜시럽(이부프로펜)",
+    "medicine_image" : "https://cdn.pharmnews.com/news/photo/202208/208010_78123_4656.jpg",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "류마티양 관절염, 연소성 류마티양 관절염, 골관절염(퇴행성 관절질환),감기로 인한 발열 및 동통, 요통, 월경곤란증, 수술후 동통",
+    "instructions": "1회 용량을 1일 3-4회 경구투여한다.",
+    "medicine_caution": "기밀용기, 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "위장관계 부작용(복통, 오심 및 구토, 소화불량, 설사 및 속쓰림) 과 배뇨장애, 어지럼증, 혈압상승 부종 등을 유발할 수 있다."
+
+  },
+  {
+    "medicine_id": 2,
+    "medicine_name": "어린이용타이레놀정80밀리그람",
+    "medicine_image" : "https://bizpharm.co.kr/web/product/big/20200217/5b71714d02eb2aa510e503bb7444aaa0.jpg",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기로 인한 발열 및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)",
+    "instructions": "1회 권장용량을 4-6시간 마다 필요시 복용한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃), 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "드물게 면역계 장애(아나필락시스 반응, 과민증)와 피부 및 피하조직 장애(두드러기, 소양성(가려움) 발진, 발진) 등을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 3,
+    "medicine_name": "어린이타이레놀현탁액",
+    "medicine_image" : "https://www.tylenol.co.kr/sites/tylenol_kr/files/styles/product_image/public/product-images/tairenol_hyeontagaeg_yaggugyong_ceugmyeontylenol_suspension_100ml.jpg",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기로 인한 발열 및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)",
+    "instructions": "1회 권장용량을 4-6시간 마다 필요시 복용한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃), 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "매우 드물게 면역계 장애(아나필락시스 반응, 과민증)와 피부 및 피하조직 장애(두드러기, 소양성(가려움) 발진, 발진) 등을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 4,
+    "medicine_name": "타이레놀정160밀리그람 (아세트아미노펜)",
+    "medicine_image" : "https://barkiri.cdn.ntruss.com/product/p14.webp",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기로 인한 발열 및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)",
+    "instructions": "1회 권장용량을 4-6시간 마다 필요시 복용한다.",
+    "medicine_caution": "어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "드물게 오심 및 구토, 피부 발진, 두드러기 등의 과민반응을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 5,
+    "medicine_name": "타이레놀정500밀리그람 (아세트아미노펜)",
+    "medicine_image" : "https://mirpharma.net/cdn/shop/files/0259be3a0fc03431bd58e3451db9e608.png?v=1690946262",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기로 인한 발열 및 동통(통증), 두통, 신경통, 근육통, 월경통, 염좌통(삔 통증)",
+    "instructions": "1회 1~2정씩 1일 3-4회 (4-6시간 마다) 필요시 복용한다.",
+    "medicine_caution": "어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "드물게 오심 및 구토, 피부 발진, 두드러기 등의 과민반응을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 6,
+    "medicine_name": "판콜에이내복액",
+    "medicine_image" : "https://barkiri.cdn.ntruss.com/product/p13.webp",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기 제증상(여러 증상) [콧물, 코막힘, 재채기, 인후(목구멍)통, 기침, 가래, 오한(춥고 떨리는 증상), 발열, 두통, 관절통, 근육통]의 완화",
+    "instructions": "성인 1회 30ml 1일 3회 식후 30분에 복용한다.",
+    "medicine_caution": "습기와 빛을 피해 실온(1~30℃), 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "발진, 가려움증, 오심 및 구토, 식욕부진, 변비, 졸음, 나른함, 구갈(입마름) 등을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 7,
+    "medicine_name": "판피린티정",
+    "medicine_image" : "https://mblogthumb-phinf.pstatic.net/MjAyMjAzMDdfMjEz/MDAxNjQ2NjI2NjQ4NzQz.ewkdjOb2QyGiXFlafgqzLzNoGob3ODpxCHVPJqIw6fkg.3LrdyVV2u_gNP5W-3PVaeaOaTgJza27f2V5sa3s-9nwg.PNG.alsdh539/image.png?type=w800",
+    "medicineCategory": {
+      "category_id": 1,
+      "category_name": "해열.진통.소염제"
+    },
+    "medicine_efficacy": "감기의 제증상(콧물, 코막힘, 재채기, 인후통, 오한, 발열, 관절통, 두통, 근육통)의 완화",
+    "instructions": "성인 1회 1정, 1일 3회 식후 30분에 복용한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃)에 보관한다.",
+    "medicine_side_effect": "오심 및 구토, 식욕부진, 졸음과 어지러움, 피부 발진이나 가려움증과 같은 과민반응을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 8,
+    "medicine_name": "닥터베아제정",
+    "medicine_image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJnywO_CgHGrAjNFlAJ-roZ7vSKVUhj-lpIEsZCoY5qw&s",
+    "medicineCategory": {
+      "category_id": 2,
+      "category_name": "건위소화제"
+    },
+    "medicine_efficacy": "소화불량, 식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감",
+    "instructions": "성인 1회 1정을 1일 3회 식후에 복용한다.",
+    "medicine_caution": "기밀용기, 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "없음"
+  },
+  {
+    "medicine_id": 9,
+    "medicine_name": "베아제정",
+    "medicine_image" : "https://m.daewoong.co.kr/attach/202004/08611963a680448a8a38b8d5237af4a5.jpg",
+    "medicineCategory": {
+      "category_id": 2,
+      "category_name": "건위소화제"
+    },
+    "medicine_efficacy": "소화불량, 식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감",
+    "instructions": "성인 1회 1정 1일 3회 식후에 복용한다.",
+    "medicine_caution": "기밀용기,어린이의 손이 닿지 않는 곳에 보관한다..",
+    "medicine_side_effect": "없음"
+  },
+  {
+    "medicine_id": 10,
+    "medicine_name": "훼스탈골드정",
+    "medicine_image" : "https://mblogthumb-phinf.pstatic.net/MjAyMDAzMjRfMjQ1/MDAxNTg1MDMzNjgyMTI4.mmA4JAQEQqcjiFXaOLN2RACg0kjDBbZFNcmotYXNhOMg.xN7B_TLKMgBUKalyuf5dwFT8GLVvLt-9Glw_7E8vqB4g.PNG.house0805/K-087.png?type=w800",
+    "medicineCategory": {
+      "category_id": 2,
+      "category_name": "건위소화제"
+    },
+    "medicine_efficacy": "소화불량, 식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감",
+    "instructions": "성인은 1회 1정씩, 1일 3회 식후에 씹지말고 복용한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃), 어린이의 손이 닿지 않는 곳에 보관한다.",
+    "medicine_side_effect": "없음"
+  },
+  {
+    "medicine_id": 11,
+    "medicine_name": "훼스탈플러스정",
+    "medicine_image" : "https://barkiri.cdn.ntruss.com/product/p255.webp",
+    "medicineCategory": {
+      "category_id": 2,
+      "category_name": "건위소화제"
+    },
+    "medicine_efficacy": "소화불량, 식욕감퇴(식욕부진), 과식, 체함, 소화촉진, 소화불량으로 인한 위부팽만감",
+    "instructions": "성인 및 15세 이상은 1회 1~2정, 만 8세~만 15세의 소아는 1회 1정을 1일 3회 식후에 씹지말고 복용한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃)에 보관한다.",
+    "medicine_side_effect": "드물게 가려움증, 발진 등의 과민반응을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 12,
+    "medicine_name": "신신파스아렉스",
+    "medicine_image" : "https://images.chosun.com/resizer/Yzrx3MVxP414xsRV722HbROwLRQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/A6G5GXWIFNGKBNBC2K5KC3XM5M.jpg",
+    "medicineCategory": {
+      "category_id": 3,
+      "category_name": "진통.진양.수렴.소염제"
+    },
+    "medicine_efficacy": "어깨결림, 허리통, 신경통, 류마티스, 타박상, 염좌(삠), 근육통, 관절통의 진통 · 소염",
+    "instructions": "1일 1~2회 질환 부위에 부착한다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃)에 보관한다.",
+    "medicine_side_effect": "발진ㆍ발적(충혈되어 붉어짐), 가려움 등을 유발할 수 있다."
+  },
+  {
+    "medicine_id": 13,
+    "medicine_name": "제일쿨파프",
+    "medicine_image" : "https://image.edaily.co.kr/images/Photo/files/NP/S/2023/10/PS23101100539b.jpg",
+    "medicineCategory": {
+      "category_id": 3,
+      "category_name": "진통.진양.수렴.소염제"
+    },
+    "medicine_efficacy": "삠, 타박상, 근육통, 관절통, 골절통, 요(허리)통, 어깨결림, 신경통, 류마티스통증의 진통ㆍ소염(항염)",
+    "instructions": "1일 1~2회 환부(질환 부위)에 붙입니다.",
+    "medicine_caution": "기밀용기, 실온(1~30℃)에 보관한다.",
+    "medicine_side_effect": "발진ㆍ발적(충혈되어 붉어짐), 가려움 등을 유발할 수 있다."
+  }
+]
+

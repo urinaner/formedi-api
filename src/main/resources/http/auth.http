@@ -1,0 +1,14 @@
+###
+POST http://localhost:8080/api/v1/wasp/simple-users/login
+Content-Type: application/json
+
+{
+  "userId": "3434",
+  "privateKey": "343434",
+  "email": "1.237.86.100"
+}
+###
+POST http://localhost:8080/api/v1/wasp/simple-users/check
+Authorization: Bearer
+###
+GET http://localhost:8080/api/v1/wasp/job-board

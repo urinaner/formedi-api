@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="!real">
+
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss}[%-5p][%thread][%F]%M\(%L\) : %m%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="kr.co.wasp.api" additivity="false">
+            <level value="DEBUG"/>
+            <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" additivity="false">
+            <level value="DEBUG"/>
+            <appender-ref ref="console"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="console"/>
+        </root>
+
+    </springProfile>
+
+</configuration>
