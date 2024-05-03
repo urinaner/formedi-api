@@ -42,10 +42,8 @@ public class DataLoadService {
     private PharmacyRepository pharmacyRepository;
     @Autowired
     private HospitalService hospitalService;
-
     @Autowired
     private NationRepository nationRepository;
-
 
     public void getMedicine() {
         String medicineAPIPath = "MedicineAPI.json";
@@ -162,20 +160,23 @@ public class DataLoadService {
         String address;
         double longtitude;
         double latitude;
-        List<String> arr = new ArrayList<>();
+        String pharmacyname;
 
         try {
-            ClassPathResource resource = new ClassPathResource("pharmacyList.json");
+            ClassPathResource resource = new ClassPathResource("pharmacyList_test.json");
             JsonNode root = mapper.readTree(resource.getInputStream()); // JSON 데이터를 JsonNode로 읽음
 
             for (JsonNode node : root) { //돌면서 저장
                 PharmacyEntity pharmacy = new PharmacyEntity();
                 pharmacy.setPhar_id(node.get("연번").asLong());
                 pharmacy.setPhar_gu(node.get("자치구").asText());
-                pharmacy.setPhar_name(node.get("약국이름").asText());
+                pharmacyname = node.get("약국이름").asText();
+                pharmacy.setPhar_name(pharmacyname);
+                pharmacy.setPhar_name_en(translate(pharmacyname, "en-Us"));
+                pharmacy.setPhar_name_ch(translate(pharmacyname, "ZH"));
+                pharmacy.setPhar_name_ja(translate(pharmacyname, "JA"));
                 pharmacy.setAddress(node.get("주소 (도로명)").asText());
                 address = node.get("주소 (도로명)").asText();
-                arr.add(address);
 //                longtitude = generateCoordinate(address).getLongitude();
 //                latitude = generateCoordinate(address).getLatitude();
 //                pharmacy.setLongitude(longtitude);
@@ -188,16 +189,18 @@ public class DataLoadService {
             }
         }catch (IOException e){
             System.out.print(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public ResponseDTO generateCoordinate(String address) throws UnsupportedEncodingException {
+    public ResponseDTO generateCoordinate(String address) throws UnsupportedEncodingException { //주소 -> 위,경도 생성
         ResponseEntity<RootDto> responseEntity = requestCoordinate("6697ce651492e186db0ea6d0c9dc850a", address); //요청 api, 주소
 
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             System.out.print(responseEntity.getBody());
             RootDto rootDto = responseEntity.getBody();
-            if(rootDto.isDocumentsEmpty()){
+            if(rootDto.isDocumentsEmpty()){ //검색이 되지않는다면..
                 ResponseDTO responseDTO = new ResponseDTO(37.5, 37.5);
                 return responseDTO;
             }
@@ -232,7 +235,7 @@ public class DataLoadService {
         return response;
         }
 
-    public String translate(String sentence, String language) throws Exception {
+    public String translate(String sentence, String language) throws Exception { //번역할문장 , 언어 -> 번역
         Translator translator;
         String authKey = "300146b9-57bd-413d-9693-610ccdc57af3:fx";  // Replace with your key
         translator = new Translator(authKey);

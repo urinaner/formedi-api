@@ -15,6 +15,9 @@ public class PharmacyEntity {
     private Long phar_id;
     private String phar_gu;
     private String phar_name;
+    private String phar_name_en;
+    private String phar_name_ch;
+    private String phar_name_ja;
     private String address;
     private double latitude;
     private double longitude;

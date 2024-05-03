@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig {
-    private static final String V1_API_PREFIX = "/api/v1/wasp";
+    private static final String V1_API_PREFIX = "";
     private final JwtSimpleUserDetailsService jwtSimpleUserDetailsService;
     private final JwtSimpleUserService jwtSimpleUserService;
     private final JwtSimpleUserAccessDeniedHandler accessDeniedHandler;

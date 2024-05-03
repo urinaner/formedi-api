@@ -60,36 +60,4 @@ public class HospitalController {
         return hospitalService.getHospitalsByNation(nationName);
     }
 
-    // review
-    @GetMapping("/{hospitalId}/reviews") // 특정 병원의 리뷰 조회
-    public List<ReviewDto> getReviewsByHospitalId(@PathVariable("hospitalId") String hospitalId) {
-        log.info("GET request received at /hospital/{}/reviews", hospitalId);
-        return reviewService.getReviewsByHospitalId(hospitalId);
-    }
-
-    @PostMapping("/{hospitalId}/reviews") // 특정 병원에 리뷰 추가
-    public ResponseEntity<ReviewDto> createReview(@PathVariable("hospitalId") String hospitalId, @RequestBody ReviewDto reviewDto) {
-        log.info("POST request received at /hospital/{}/reviews", hospitalId);
-        reviewDto.setHospitalId(hospitalId);
-        ReviewDto createdReview = reviewService.createReview(reviewDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdReview);
-    }
-
-    @PutMapping("/{hospitalId}/reviews/{reviewId}") // 특정 병원의 리뷰 수정
-    public ResponseEntity<ReviewDto> updateReview(@PathVariable("hospitalId") String hospitalId, @PathVariable("reviewId") Long reviewId, @RequestBody ReviewDto reviewDto) {
-        log.info("PUT request received at /hospital/{}/reviews/{}", hospitalId, reviewId);
-        if (!reviewDto.getHospitalId().equals(hospitalId)) {
-            throw new IllegalArgumentException("Hospital ID in path does not match Hospital ID in request body");
-        }
-        ReviewDto updatedReview = reviewService.updateReview(reviewId, reviewDto);
-        return ResponseEntity.ok(updatedReview);
-    }
-
-    @DeleteMapping("/{hospitalId}/reviews/{reviewId}") // 특정 병원의 리뷰 삭제
-    public ResponseEntity<Void> deleteReview(@PathVariable("hospitalId") String hospitalId, @PathVariable("reviewId") Long reviewId) {
-        log.info("DELETE request received at /hospital/{}/reviews/{}", hospitalId, reviewId);
-        reviewService.deleteReview(reviewId);
-        return ResponseEntity.noContent().build();
-    }
-
 }
