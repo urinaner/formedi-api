@@ -33,6 +33,9 @@ public class Hospital {
 
     private String hospital_address;
 
+    private Double hospital_latitude;
+    private Double hospital_longitude;
+
     @ManyToMany
     @JoinTable(
             name = "hospital_nation",

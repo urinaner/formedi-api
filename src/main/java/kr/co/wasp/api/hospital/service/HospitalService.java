@@ -94,6 +94,8 @@ public class HospitalService {
                 .hospital_dong(hospital.getHospital_dong())
                 .hospital_ceo(hospital.getHospital_ceo())
                 .hospital_address(hospital.getHospital_address())
+                .hospital_latitude(hospital.getHospital_latitude())
+                .hospital_longitude(hospital.getHospital_longitude())
                 .nations(hospital.getHospital_nations().stream().map(Nation::getName).collect(Collectors.toSet()))
                 .build();
     }
