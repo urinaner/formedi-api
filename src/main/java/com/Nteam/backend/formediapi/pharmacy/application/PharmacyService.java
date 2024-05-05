@@ -98,17 +98,17 @@ public class PharmacyService {
                 .build();
     }
 
-    public List<PharmacyDTO> getPharmaciesByName(String name) {
-        return pharmacyRepository.findByPharNameContaining(name)
-                .stream()
-                .map(this::transform)
-                .collect(Collectors.toList());
-    }
-
-    public List<PharmacyDTO> getPharmaciesByDistrict(String district) {
-        return pharmacyRepository.findByPharGu(district)
-                .stream()
-                .map(this::transform)
-                .collect(Collectors.toList());
-    }
+//    public List<PharmacyDTO> getPharmaciesByName(String name) {
+//        return pharmacyRepository.findByPharNameContaining(name)
+//                .stream()
+//                .map(this::transform)
+//                .collect(Collectors.toList());
+//    }
+//
+//    public List<PharmacyDTO> getPharmaciesByDistrict(String district) {
+//        return pharmacyRepository.findByPharGu(district)
+//                .stream()
+//                .map(this::transform)
+//                .collect(Collectors.toList());
+//    }
 }

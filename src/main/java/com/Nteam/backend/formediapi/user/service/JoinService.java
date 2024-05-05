@@ -8,37 +8,35 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class JoinService {
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public JoinService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder){
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public JoinService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public List<UserEntity> getUsers() {
-        return userRepository.findAll();
-    }
-
-
     public void joinProcess(JoinDTO joinDTO) {
 
+        String username = joinDTO.getUsername();
+        String password = joinDTO.getPassword();
 
-        //db에 이미 동일한 username을 가진 회원이 존재하는지?
-        boolean isUser = userRepository.existsByUsername(joinDTO.getUsername());
-        if (isUser) {
+        Boolean isExist = userRepository.existsByUsername(username);
+
+        if (isExist) {
+
             return;
         }
 
         UserEntity data = new UserEntity();
 
-        data.setUsername(joinDTO.getUsername());
-        data.setPassword(bCryptPasswordEncoder.encode(joinDTO.getPassword()));
-        data.setRole("ROLE_USER");
-
+        data.setUsername(username);
+        data.setPassword(bCryptPasswordEncoder.encode(password));
+        data.setRole("ROLE_ADMIN");
 
         userRepository.save(data);
     }

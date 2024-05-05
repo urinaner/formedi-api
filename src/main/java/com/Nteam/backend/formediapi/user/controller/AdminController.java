@@ -1,14 +1,13 @@
 package com.Nteam.backend.formediapi.user.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
-    @GetMapping("/login")
-    public String loginP() {
+public class AdminController {
+    @GetMapping("/admin")
+    public String adminP() {
 
-        return "login";
+        return "admin Controller";
     }
 }

@@ -27,17 +27,13 @@ public class JoinController {
     }
 
 
-    @GetMapping("/list")
-    public List<UserEntity> getUsers(){
-        return joinService.getUsers();
-    }
 
     @PostMapping("/join")
     public String joinProcess(@RequestBody JoinDTO joinDTO) {
 
         System.out.println(joinDTO.getUsername());
-
         joinService.joinProcess(joinDTO);
-        return "로그인 성공";
+
+        return "ok";
     }
 }

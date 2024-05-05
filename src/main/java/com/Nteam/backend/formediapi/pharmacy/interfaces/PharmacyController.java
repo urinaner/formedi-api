@@ -31,15 +31,15 @@ public class PharmacyController {
         return pharmacyService.getPharmaciesByLanguage(langId);
     }
 
-    @GetMapping("/name/{name}")
-    public List<PharmacyDTO> getPharmaciesByName(@PathVariable(value = "name") String name) {
-        return pharmacyService.getPharmaciesByName(name);
-    }
-
-    @GetMapping("/gu/{gu}")
-    public List<PharmacyDTO> getPharmaciesByDistrict(@PathVariable(value = "gu") String gu) {
-        return pharmacyService.getPharmaciesByDistrict(gu);
-    }
+//    @GetMapping("/name/{name}")
+//    public List<PharmacyDTO> getPharmaciesByName(@PathVariable(value = "name") String name) {
+//        return pharmacyService.getPharmaciesByName(name);
+//    }
+//
+//    @GetMapping("/gu/{gu}")
+//    public List<PharmacyDTO> getPharmaciesByDistrict(@PathVariable(value = "gu") String gu) {
+//        return pharmacyService.getPharmaciesByDistrict(gu);
+//    }
 
 //    @GetMapping("/gu/{gu}") // 구조회
 //    public List<PharmacyDTO> getHospitalsByGu(@PathVariable(value = "gu") String gu) {
