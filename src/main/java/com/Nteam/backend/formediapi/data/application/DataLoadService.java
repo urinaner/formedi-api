@@ -180,9 +180,9 @@ public class DataLoadService {
             for (JsonNode node : root) { //돌면서 저장
                 PharmacyEntity pharmacy = new PharmacyEntity();
                 pharmacy.setPhar_id(node.get("연번").asLong());
-                pharmacy.setPhar_gu(node.get("자치구").asText());
+                pharmacy.setDistrict(node.get("자치구").asText());
                 pharmacyname = node.get("약국이름").asText();
-                pharmacy.setPhar_name(pharmacyname);
+                pharmacy.setName(pharmacyname);
                 pharmacy.setPhar_name_en(translate(pharmacyname, "en-Us"));
                 pharmacy.setPhar_name_ch(translate(pharmacyname, "ZH"));
                 pharmacy.setPhar_name_ja(translate(pharmacyname, "JA"));
