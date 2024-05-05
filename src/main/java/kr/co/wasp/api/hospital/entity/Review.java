@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
-@Entity(name = "Review")
+@Entity(name = "Hospital_Review")
 @Getter
 @Setter
 public class Review {

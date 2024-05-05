@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, String> {
-    @Query("SELECT r FROM Review r WHERE r.hospital.hospital_key = :hospitalId")
+    @Query("SELECT r FROM Hospital_Review r WHERE r.hospital.hospital_key = :hospitalId")
     List<Review> findByHospitalId(@Param("hospitalId") String hospitalId);
 }

@@ -6,6 +6,11 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:wasp
+  profiles:
+    include: secret
+  output:
+    ansi:
+      enabled: always
 feign:
   client:
     config:
@@ -20,3 +25,7 @@ feign:
 jwt:
   expiration_time: 86400 # 1d
   secret: ffd538b4179c3ca10e0e121b2bd6d112af14bb6e219212a1b753fa98ead6e21bd72263e083a43a2105e9ceb72ca8acceb3191f4b8a538594f3e175e40ad84488
+
+logging:
+  level:
+    kr.co.wasp.api: DEBUG

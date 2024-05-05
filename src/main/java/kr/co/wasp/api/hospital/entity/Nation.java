@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name="Nation")
+@Entity(name="H_Nation")
 @Getter
 @Setter
 public class Nation {

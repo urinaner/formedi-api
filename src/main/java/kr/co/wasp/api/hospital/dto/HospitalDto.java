@@ -31,6 +31,9 @@ public class HospitalDto {
 
     private String hospital_address;
 
+    private Double hospital_latitude;
+    private Double hospital_longitude;
+
     private Set<String> nations;
 
 }

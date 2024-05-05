@@ -17,20 +17,23 @@ import kr.co.wasp.api.pharmacy.domain.PharmacyEntity;
 import kr.co.wasp.api.pharmacy.inflastructure.PharmacyRepository;
 import kr.co.wasp.api.pharmacy.inflastructure.datatool.ResponseDTO;
 import kr.co.wasp.api.pharmacy.inflastructure.datatool.address.RootDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.*;
 import java.net.URI;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
+@Slf4j
 @Service
 public class DataLoadService {
 
@@ -95,7 +98,7 @@ public class DataLoadService {
     }
 
     public void getHospital() {
-        String filePath = "src/main/resources/hospital_test.csv";
+        String filePath = "src/main/resources/hospital.csv";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine(); // 헤더 처리
@@ -115,22 +118,80 @@ public class DataLoadService {
                 String hospitalAddress = data[8];
 
                 Hospital hospital = new Hospital();
+
                 hospital.setHospital_key(hospitalKey);
                 hospital.setHospital_register_num(hospitalRegisterNum);
                 hospital.setHospital_name(hospitalName);
-                hospital.setHospital_name_en(translate(hospitalName, "en-Us"));
-                hospital.setHospital_name_ch(translate(hospitalName, "ZH"));
-                hospital.setHospital_name_ja(translate(hospitalName, "JA"));
                 hospital.setHospital_category(hospitalCategory);
                 hospital.setHospital_si(hospitalSi);
                 hospital.setHospital_gu(hospitalGu);
                 hospital.setHospital_dong(hospitalDong);
                 hospital.setHospital_ceo(hospitalCeo);
+                hospital.setHospital_name_en(translate(hospitalName, "en-Us"));
+                hospital.setHospital_name_ch(translate(hospitalName, "ZH"));
+                hospital.setHospital_name_ja(translate(hospitalName, "JA"));
 
-                // 주소에서 큰따옴표가 있는 경우 처리
-                hospitalAddress = hospitalAddress.replaceAll("^\"|\"$", "");
+                // 주소가 비어있는 경우 위도, 경도에 null 설정
+                if (hospitalAddress.isEmpty()) {
+                    hospital.setHospital_latitude(null);
+                    hospital.setHospital_longitude(null);
+                } else {
+                    // 주소에서 큰따옴표가 있는 경우 처리
+                    hospitalAddress = hospitalAddress.replaceAll("^\"|\"$", "");
+                    hospital.setHospital_address(hospitalAddress);
 
-                hospital.setHospital_address(hospitalAddress);
+                    // 주소 -> 위도, 경도
+                    String encodedAddress = URLEncoder.encode(hospitalAddress, StandardCharsets.UTF_8);
+
+                    String apiUrl = "http://15.164.137.89:8080/map/" + encodedAddress;
+                    URI uri = URI.create(apiUrl);
+
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+
+                    RestTemplate restTemplate = new RestTemplate();
+                    try {
+                        ResponseEntity<Map> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), Map.class);
+                        if (response.getStatusCode() == HttpStatus.OK) {
+                            Map<String, Double> coordinates = response.getBody();
+                            if (coordinates != null) {
+                                double latitude = coordinates.get("latitude");
+                                double longitude = coordinates.get("longitude");
+                                hospital.setHospital_latitude(latitude);
+                                hospital.setHospital_longitude(longitude);
+                            } else {
+                                System.out.println("Failed to retrieve coordinates for the given address. Hospital ID: " + hospitalKey + ", Address: " + hospitalAddress);
+                                log.debug("Failed to retrieve coordinates for the given address. Hospital ID: {}, Address: {}", hospitalKey, hospitalAddress);
+                            }
+                        } else if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
+                            System.out.println("404 Error occurred for hospital: " + hospitalKey);
+                            log.debug("404 Error occurred for hospital: {}", hospitalKey);
+                            hospital.setHospital_latitude(null);
+                            hospital.setHospital_longitude(null);
+                        } else if (response.getStatusCode() == HttpStatus.BAD_REQUEST) {
+                            System.out.println("400 Error occurred for hospital: " + hospitalKey + ". Skipping this hospital.");
+                            log.debug("400 Error occurred for hospital: {}. Skipping this hospital.", hospitalKey);
+                            continue; // 400 에러가 발생한 병원은 무시하고 다음 병원으로 넘어감
+                        } else {
+                            System.out.println(response.getStatusCode() + " Error occurred for hospital: " + hospitalKey);
+                            log.debug(response.getStatusCode() + " Error occurred for hospital: {}", hospitalKey);
+                            continue; // 오류가 발생한 병원은 무시하고 다음 병원으로 넘어감
+                        }
+                    } catch (HttpClientErrorException.BadRequest e) {
+                        System.out.println("400 Error occurred for hospital: " + hospitalKey + ". Skipping this hospital.");
+                        log.debug("400 Error occurred for hospital: {}. Skipping this hospital.", hospitalKey);
+                        continue; // 400 에러가 발생한 병원은 무시하고 다음 병원으로 넘어감
+                    } catch (HttpServerErrorException e) {
+                        System.out.println("500 Error occurred for hospital: " + hospitalKey);
+                        log.debug("500 Error occurred for hospital: {}", hospitalKey);
+                        continue; // 500 에러가 발생한 병원은 무시하고 다음 병원으로 넘어감
+                    } catch (Exception e) {
+                        System.out.println("Unexpected error occurred for hospital: " + hospitalKey);
+                        log.debug("Unexpected error occurred for hospital: {}", hospitalKey);
+                        continue; // 예상치 못한 오류가 발생한 병원은 무시하고 다음 병원으로 넘어감
+                    }
+                }
 
                 // 국가 정보가 있는 경우 처리
                 if (data.length > 9) {
@@ -155,17 +216,16 @@ public class DataLoadService {
                     }
                 }
 
-
                 hospitalService.saveHospitalAndNations(hospital);
             }
         } catch (IOException e) {
+            log.error("CSV 파일을 읽는 중 오류가 발생했습니다: {}", e.getMessage());
             e.printStackTrace();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
 
     public void getPharmacy() {
         ObjectMapper mapper = new ObjectMapper();
