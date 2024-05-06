@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -60,6 +61,14 @@ public class ReviewService {
 
     public void deleteReview(Long reviewId) {
         reviewRepository.deleteById(reviewId.toString());
+    }
+
+    public double getAverageRatingByHospitalId(String hospitalId) {
+        List<Review> reviews = reviewRepository.findByHospitalId(hospitalId);
+        OptionalDouble averageRating = reviews.stream()
+                .mapToInt(Review::getRating)
+                .average();
+        return averageRating.orElse(0);
     }
 
     private ReviewDto convertToDto(Review review) {

@@ -93,4 +93,9 @@ public class HospitalController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/rating/{hospitalId}") // 특정 병원의 평균 별점 조회
+    public double getAverageRatingByHospitalId(@PathVariable("hospitalId") String hospitalId) {
+        return reviewService.getAverageRatingByHospitalId(hospitalId);
+    }
+
 }
