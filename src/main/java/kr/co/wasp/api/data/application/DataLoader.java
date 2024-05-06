@@ -13,7 +13,7 @@ public class DataLoader implements org.springframework.boot.CommandLineRunner {
     @Override
     public void run(String... args) throws Exception{
         dataLoadService.getMedicine();
-        dataLoadService.getHospital();
+//        dataLoadService.getHospital();
         dataLoadService.getPharmacy();
 
     }

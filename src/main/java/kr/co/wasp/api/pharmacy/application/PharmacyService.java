@@ -90,6 +90,8 @@ public class PharmacyService {
                 .name_en(pharmacyEntity.getPhar_name_en())
                 .name_ch(pharmacyEntity.getPhar_name_ch())
                 .name_ja(pharmacyEntity.getPhar_name_ja())
+                .latitude(pharmacyEntity.getLatitude())
+                .longitude(pharmacyEntity.getLongitude())
                 .address(pharmacyEntity.getAddress())
                 .phone(pharmacyEntity.getPhone())
                 .english(pharmacyEntity.isEnglish())

@@ -235,7 +235,7 @@ public class DataLoadService {
         String pharmacyname;
 
         try {
-            ClassPathResource resource = new ClassPathResource("pharmacyList_test.json");
+            ClassPathResource resource = new ClassPathResource("pharmacyList.json");
             JsonNode root = mapper.readTree(resource.getInputStream()); // JSON 데이터를 JsonNode로 읽음
 
             for (JsonNode node : root) { //돌면서 저장
