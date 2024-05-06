@@ -241,18 +241,18 @@ public class DataLoadService {
             for (JsonNode node : root) { //돌면서 저장
                 PharmacyEntity pharmacy = new PharmacyEntity();
                 pharmacy.setPhar_id(node.get("연번").asLong());
-                pharmacy.setPhar_gu(node.get("자치구").asText());
+                pharmacy.setDistrict(node.get("자치구").asText());
                 pharmacyname = node.get("약국이름").asText();
-                pharmacy.setPhar_name(pharmacyname);
+                pharmacy.setName(pharmacyname);
                 pharmacy.setPhar_name_en(translate(pharmacyname, "en-Us"));
                 pharmacy.setPhar_name_ch(translate(pharmacyname, "ZH"));
                 pharmacy.setPhar_name_ja(translate(pharmacyname, "JA"));
                 pharmacy.setAddress(node.get("주소 (도로명)").asText());
                 address = node.get("주소 (도로명)").asText();
-//                longtitude = generateCoordinate(address).getLongitude();
-//                latitude = generateCoordinate(address).getLatitude();
-//                pharmacy.setLongitude(longtitude);
-//                pharmacy.setLatitude(latitude);
+                longtitude = generateCoordinate(address).getLongitude();
+                latitude = generateCoordinate(address).getLatitude();
+                pharmacy.setLongitude(longtitude);
+                pharmacy.setLatitude(latitude);
                 pharmacy.setPhone(node.get("전화번호").asText());
                 pharmacy.setEnglish(node.has("영어") && "○".equals(node.get("영어").asText()));
                 pharmacy.setChinese(node.has("중국어") && "○".equals(node.get("중국어").asText()));

@@ -31,10 +31,23 @@ public class PharmacyController {
         return pharmacyService.getPharmaciesByLanguage(langId);
     }
 
-//    @GetMapping("/gu/{gu}") // 구조회
-//    public List<PharmacyDTO> getHospitalsByGu(@PathVariable(value = "gu") String gu) {
-//        return pharmacyService.getHospitalsByGu(gu);
+//    @GetMapping("/name/{keyword}")
+//    public List<PharmacyDTO> searchPharmaciesByKeyword(@RequestParam("keyword") String keyword) {
+//        return pharmacyService.searchPharmaciesByKeyword(keyword);
 //    }
+
+    // Endpoint to get pharmacies by district
+    @GetMapping("/name/{name}")
+    public List<PharmacyDTO> getPharmaciesName(@PathVariable("name") String name){
+        return pharmacyService.getPharmaciesByName(name);
+    }
+
+    @GetMapping("/gu/{gu}")
+    public List<PharmacyDTO> getPharmaciesByDistrict(@PathVariable("gu") String gu){
+        return pharmacyService.getPharmaciesByDistrict(gu);
+    }
+
+
 
     @GetMapping("/nearest") //근처 약국 조회 요청값 위도, 경도, 언어 가능유무
     public List<PharmacyEntity> getNearestPharmacies(

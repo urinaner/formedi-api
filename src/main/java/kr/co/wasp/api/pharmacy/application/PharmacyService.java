@@ -30,8 +30,8 @@ public class PharmacyService {
             PharmacyEntity pharmacyEntity = optionalPharmacy.get();
             return PharmacyDTO.builder()
                     .id(pharmacyEntity.getPhar_id())
-                    .district(pharmacyEntity.getPhar_gu())
-                    .name(pharmacyEntity.getPhar_name())
+                    .district(pharmacyEntity.getDistrict())
+                    .name(pharmacyEntity.getName())
                     .name_en(pharmacyEntity.getPhar_name_en())
                     .name_ch(pharmacyEntity.getPhar_name_ch())
                     .name_ja(pharmacyEntity.getPhar_name_ja())
@@ -85,8 +85,8 @@ public class PharmacyService {
     private PharmacyDTO transform(PharmacyEntity pharmacyEntity) { //변경폼
         return PharmacyDTO.builder()
                 .id(pharmacyEntity.getPhar_id())
-                .district(pharmacyEntity.getPhar_gu())
-                .name(pharmacyEntity.getPhar_name())
+                .district(pharmacyEntity.getDistrict())
+                .name(pharmacyEntity.getName())
                 .name_en(pharmacyEntity.getPhar_name_en())
                 .name_ch(pharmacyEntity.getPhar_name_ch())
                 .name_ja(pharmacyEntity.getPhar_name_ja())
@@ -97,4 +97,22 @@ public class PharmacyService {
                 .japanese(pharmacyEntity.isJapanese())
                 .build();
     }
+
+
+    // Method to get pharmacies by district
+    public List<PharmacyDTO> getPharmaciesByName(String name) {
+        return pharmacyRepository.findByNameContaining(name)
+                .stream()
+                .map(this::transform)
+                .collect(Collectors.toList());
+    }
+
+    public List<PharmacyDTO> getPharmaciesByDistrict(String gu) {
+        return pharmacyRepository.findByDistict(gu)
+                .stream()
+                .map(this::transform)
+                .collect(Collectors.toList());
+    }
+
+
 }

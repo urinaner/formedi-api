@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class PharmacyEntity {
     @Id
     private Long phar_id;
-    private String phar_gu;
-    private String phar_name;
+    private String district;
+    private String name;
     private String phar_name_en;
     private String phar_name_ch;
     private String phar_name_ja;

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/wasp/simple-users")
 public class SimpleUserApiController {
     private final SimpleUserService simpleUserService;
 
